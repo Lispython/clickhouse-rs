@@ -21,6 +21,11 @@ pub use self::{
 #[cfg(feature = "ssl")]
 pub use self::options::Certificate;
 
+
+pub use self::{
+    either::Either
+};
+
 pub(crate) use self::{
     cmd::Cmd,
     date_converter::DateConverter,
@@ -29,14 +34,16 @@ pub(crate) use self::{
     stat_buffer::StatBuffer,
     unmarshal::Unmarshal,
     value_ref::ValueRef,
-    either::Either,
     query_result::set_exception_handle,
 };
+
+
+
 
 #[cfg(feature = "tls")]
 pub use self::options::Certificate;
 
-pub(crate) mod column;
+pub mod column;
 mod marshal;
 mod stat_buffer;
 mod unmarshal;
@@ -52,11 +59,11 @@ mod date_converter;
 mod query;
 mod query_result;
 
-mod decimal;
+pub mod decimal;
 mod enums;
 mod options;
 
-pub(crate) mod either;
+pub mod either;
 
 #[derive(Copy, Clone, Debug, Default, PartialEq)]
 pub(crate) struct Progress {
